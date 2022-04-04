@@ -47,9 +47,10 @@
 
 .navbar-item {
     display: flex;
-    flex-direction: column;
     padding: 5px;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navbar-links {
@@ -71,404 +72,536 @@
 /*animations*/
 
 /*whitepaper*/
-
-.glow {
-    background-color: black;
-    width: 60px;
-    height: 49px;
-    padding: 10px;
-    position: relative;
+@property --a {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 10%;
+}
+@property --b {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 60%;
+}
+@property --c {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
 }
 
-#movestar .rectangle {
-    width: 28.16px;
-    height: 39.64px;
-    position: absolute;
-    top: 10px;
-    left: 45px;
-    opacity: 0;
-    background-color: white;
-    box-shadow: 0px 0px 10px #FFFFFF;
-    border-radius: 2px;
-    transition: opacity 0.7s ease-in 0.2s;
-    z-index: 20;
-  }
+body {
+  background-color: black;
+}
 
-#movestar .rectangle2 {
-    width: 28.16px;
-    height: 39.64px;
-    background-color: #FFFFFF;
-    border-radius: 2px;
-    position: absolute;
-    top: 10px;
-    left: 45px;
-  }
+.icon-whitepaper {
+  width: 52px;
+  height: 49px;
+  position: relative;
+  display: flex;
+  margin-top: 5px;
+  top: 6px;
+}
 
-#movestar .snake {
-    position: absolute;
-    top: 17px;
-    left: 39px;
-    z-index: 18;
-  }
-
-#movestar .startail {
-    position: absolute;
-    top: 32px;
-    left: 64px;
-    transition: transform 0.7s ease-in 0.2s;
-  }
-
-#movestar .blackstar {
-    position: absolute;
-    top: -15px;
-    left: 45px;
-    opacity: 0;
-    z-index: 21;
-    transition: opacity 0.7s ease-in 0.2s,
-                transform 0.7s ease-in 0.2s;
-  }
-
-#movestar:hover .startail {
-    transform: translateX(-19px);
-  }
+.whitepaper-rectangle-cover {
+  --a: 5%;
+  --b: 70%;
+  --c: 100%;
   
-  
-#movestar:hover .rectangle {
-    opacity: 100%;
-  }
-  
+  position: absolute;
+  background: linear-gradient(270deg, #FFFFFF var(--a), #000000 var(--b), #000000 var(--c));
+  top: 0;
+  left: 0.5px;
+  width: 29px;
+  height: 40px;
+  z-index: -1;
+  border-radius: 2px;
+  box-shadow: 0px 0px 4px 4px rgba(255,255,255, 0);
+  transition: --x 0.5s 0.2s, --y 0.5s, box-shadow 0.7s 0.2s;
+}
 
-#movestar:hover .blackstar {
-    opacity: 100%;
-    transform: translateY(25px);
-  }
+.icon-whitepaper:hover .whitepaper-rectangle-cover {
+  --a: 100%;
+  --b: 100%; 
+   box-shadow: 0px 0px 4px 4px rgba(255,255,255, 0.25);
+}
 
+.white-line {
+  position: absolute;
+  top: 30.5px;
+  left: 28px;
+  width: 10px;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.7s;
+}
+
+.icon-whitepaper:hover .white-line {
+  transform: translateX(-18px);
+}
+
+.whitepaper-white-star {
+  position: absolute;
+  top: 23px;
+  left: 31px;
+  transition: transform 0.7s;
+}
+
+.icon-whitepaper:hover .whitepaper-white-star {
+  transform: translateX(-21px);
+}
+
+.whitepaper-black-star  {
+  position: absolute;
+  top: -22px;
+  left: 1px;
+  opacity: 0;
+  transition: transform 0.7s, opacity 0.7s;
+  
+}
+
+.icon-whitepaper:hover .whitepaper-black-star {
+  transform: translateY(28px);
+  opacity: 100%;
+  
+}
   /*starmap*/
   
-  .starmap {
-    width: 60px;
-    height: 50px;
+  @property --d {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 3%;
+  }
+  @property --e {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 15%;
+  }
+  @property --f {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 30%;
+  }
+  
+  @property --g {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 30%;
+  }
+  
+  @property --h {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 17.75%;
+  }
+  
+  @property --i {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 100%;
+  }
+ 
+  .icon-starmap {
     position: relative;
-    margin: 0 auto;
+    width: 65px;
+    height: 40px;
+    top: 15px;
+    margin-top: 14px;
+    top: 2px;
+  }
+   .icon-starmap .box {
+    --d:3%;
+    --e:15%;
+    --f:30%;
+  
+    width: 51px;
+    height: 22px;
+    transform: perspective(1px) rotateX(1deg);
+    margin: 10px auto;
+    border-radius: 5px;
+    background: linear-gradient(25deg, white var(--d), black var(--e), white var(--f));
+    transition:--d 0.7s,--e 0.7s 0.2s,--f 0.7s 0.2s, 
+      box-shadow 0.2s 0.2s;
+    }
+  
+  .icon-starmap:hover .box {
+    --d: 10%;
+    --e: 250%;
+    --f: 150%;
+    box-shadow: 0 -6px 20px #FFF; 
   }
   
-  #movestarmap .rectangle {
+  .icon-starmap .sphere {
+    --h:17.75%;
+    --i:100%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: radial-gradient(59.05% 59.05% at 17.7% 91.06%, #FFFFFF var(--h), #000000 var(--i));
+    transform: rotate(180deg);
     position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  #movestarmap .circle {
-    position: absolute;
-    top: 18px;
+    top: 3px;
     left: 15px;
-    transition: transform 0.7s ease-in;
-    z-index: 1;
+    transition: box-shadow 0.2s 0.2s,
+                --h 0.7s,--i 0.7s,
+                transform 0.5s;
   }
   
-  #movestarmap .blackstar {
-    position: absolute;
-    top: 27px;
-    left: 32px;
-    transition: transform 0.7s ease-in;
+  .icon-starmap:hover .sphere {
+    box-shadow: 0 4px 15px 5px #FFF;
+    transform: translateX(8px);
   }
   
-  #movestarmap .whitestar {
+  .starmap-blackstar {
     position: absolute;
-    top: 7px;
-    left: 32px;
+    top: 11px;
+    left: 35px;
+    transition: transform 0.5s ease-in;
+  }
+  
+  .starmap-whitestar {
+    position: absolute;
+    top: -8px;
+    left: 35px;
+    transition: transform 0.5s ease-in;
     z-index: -1;
-    transition: transform 0.7s ease-in;
   }
   
-  #movestarmap .rectangle-glow {
-    position: absolute;
-    top: 18px;
-    transform: scale(1.3);
-    left: 0;
-    margin: 0 auto;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.7s ease-in;
+  .icon-starmap:hover .starmap-whitestar {
+    transform: translateY(19px);
   }
   
-  
-  /*hover*/
-  
-  #movestarmap:hover .blackstar {
-    transform: translateY(-20px);
+  .icon-starmap:hover .starmap-blackstar {
+    transform: translateY(-37px);
   }
   
-  #movestarmap:hover .whitestar {
-    transform: translateY(20px);
-  }
-  
-  #movestarmap:hover .circle{
-    transform: translateX(7px) rotate(-180deg);
-  }
-  
-  #movestarmap:hover .rectangle-glow {
-    opacity: 100%;
-  }
-
 /*gallery*/
 
+@property --j {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 36%;
+}
+@property --k {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
+}
 
-.gallery {
-    width: 60px;
-    height: 50px;
-    position: relative;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  #movegallery .first-rec {
-    position: absolute;
-    top: 8px;
-    left: 7px;
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  
-  #movegallery .second-rec {
-    position: absolute;
-    top: 8px;
-    left: 30px;
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  
-  
-  #movegallery .third-rec {
-    position: absolute;
-    top: 28px;
-    left: 7px;
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  
-  #movegallery .fourth-rec {
-    position: absolute;
-    bottom: 0;
-    left: 38px; 
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  #movegallery .fifth-rec {
-    position: absolute;
-    bottom: 0;
-    left: 7px;
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  
-  .rect-first {
-    width: 16px;
-    height: 14px;
-    background-color: white;
-    border-radius: 2px;
-    position: absolute;
-    top: 8px;
-    left: 7px;
-    box-shadow: 0px 0px 10px #FFFFFF;
-    opacity: 0;
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  
-  .rect-second {
-    width: 21px;
-    height: 14px;
-    background-color: white;
-    border-radius: 2px;
-    position: absolute;
-    top: 8px;
-    left: 30px;
-    box-shadow: 0px 0px 10px #FFFFFF;
-    opacity: 0;
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  
-  .rect-third {
-    width: 24px;
-    height: 14px;
-    background-color: white;
-    border-radius: 2px;
-    position: absolute;
-    top: 28px;
-    left: 7px;
-    box-shadow: 0px 0px 10px #FFFFFF;
-    opacity: 0;
-    transition: opacity 0.7s ease-in 0.2s;
-  }
-  
-  .rect-fourth {
-    position: absolute;
-    top: 28px;
-    left: 38px;
-    width: 13px;
-    height: 22px;
-    background-color: white;
-    border-radius: 2px;
-    box-shadow: 0px 0px 10px #FFFFFF;
-    opacity: 0;
-    transition: height 0.7s ease-in 0.2s,
-                opacity 0.7s ease-in 0.2s;
-                
-  }
-  
-  .rect-fifth {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-    position: absolute;
-    bottom: 0;
-    left: 7px;
-    box-shadow: 0px 0px 10px #FFFFFF;
-    opacity: 0;
-    transition: width 0.7s ease-in 0.2s,
-                opacity 0.7s ease-in 0.2s;
-                
-  }
-  
-  #movegallery:hover .first-rec {
-    opacity: 0;
-  }
-  
-  
-  #movegallery:hover .second-rec{
-    opacity: 0;
-  } 
-  #movegallery:hover .third-rec {
-    opacity: 0;
-  }
-  
-  #movegallery:hover .fourth-rec {
-    opacity: 0;
-  }
-  
-  #movegallery:hover .fifth-rec {
-    opacity: 0;
-  }
-  
-  #movegallery:hover .rect-first {
-    opacity: 100%;
-  }
-  
-  #movegallery:hover .rect-second {
-    opacity: 100%;
-  } 
-  
-  
-  #movegallery:hover .rect-third{
-    opacity: 100%;
-  }
-  #movegallery:hover .rect-fourth {
-    opacity: 100%;
-    height: 14px;
-  }
-  #movegallery:hover .rect-fifth {
-    opacity: 100%;
-    width: 44px;
-  }
+.icon-gallery {
+  width: 41px;
+  height: 40px;
+  position: relative;
+  margin-top: 15px;
+  top: -3px;
+}
+
+.rect-1 {
+  width: 15px;
+  height: 13px;
+  background: linear-gradient(270deg, #FFFFFF var(--j), #000000 var(--k));
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: --j 0.7s,--k 0.7s;
+}
+
+.icon-gallery:hover .rect-1 {
+  --j: 100%;
+  --k: 100%;
+}
+
+.rect-1-glow {
+  width: 15px;
+  height: 7px;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 4px 4px rgba(255,255,255, 0.25);
+  opacity: 0;
+  transition: opacity 0.7s 0.5s;
+}
+
+.icon-gallery:hover .rect-1-glow {
+  opacity: 100%;
+}
+
+.rect-2 {
+  width: 19px;
+  height: 13px;
+  background: linear-gradient(270deg, #FFFFFF var(--j), #000000 var(--k));
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 22px;
+  z-index: 1;
+  transition: --j 0.7s,--k 0.7s;
+}
+
+.icon-gallery:hover .rect-2 {
+ --j: 100%;
+  --k: 100%;
+}
+
+.rect-2-glow {
+  width: 19px;
+  height: 6px;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 22px;
+  box-shadow: 0px 0px 4px 4px rgba(255,255,255, 0.25);
+  opacity: 0;
+  transition: opacity 0.7s 0.5s;
+}
+
+.icon-gallery:hover .rect-2-glow {
+  opacity: 100%;
+}
+
+.rect-3 {
+  width: 22px;
+  height: 12px;
+  background: linear-gradient(270deg, #FFFFFF var(--j), #000000 var(--k));
+  border-radius: 2px;
+  position: absolute;
+  top: 19px;
+  left: 0;
+  z-index: 1;
+  transition: --j 0.7s,--k 0.7s;
+}
+
+.icon-gallery:hover .rect-3 {
+  --j: 100%;
+  --k: 100%;
+}
+
+.rect-3-glow {
+  width: 5px;
+  height: 12px;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 19px;
+  left: 0;
+  box-shadow: 0px 0px 4px 4px rgba(255,255,255, 0.25);
+  opacity: 0;
+  transition: opacity 0.7s 0.5s;
+}
+
+.icon-gallery:hover .rect-3-glow {
+  opacity: 100%;
+}
+
+.rect-4 {
+  width: 12px;
+  height: 22px;
+  background: linear-gradient(270deg, #FFFFFF var(--j), #000000 var(--k));
+  border-radius: 2px;
+  position: absolute;
+  top: 19px;
+  left: 29px;
+  z-index: 1;
+  transition:--j 0.7s,--k 0.7s, height 0.7s;
+}
+
+.icon-gallery:hover .rect-4 {
+  --j: 100%;
+  --k: 100%;
+  height: 12px;
+}
+
+.rect-4-glow {
+  width: 7px;
+  height: 12px;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 19px;
+  left: 34px;
+  box-shadow: 0px 0px 4px 4px rgba(255,255,255, 0.25);
+  opacity: 0;
+  transition: opacity 0.7s 0.5s;
+}
+
+.icon-gallery:hover .rect-4-glow {
+  opacity: 100%;
+}
+
+.rect-5 {
+  width: 22px;
+  height: 2.5px;
+  background: linear-gradient(90deg, #FFFFFF var(--j), #000000 var(--k));
+  border-radius: 2px;
+  position: absolute;
+  top: 38px;
+  left: 0;
+  z-index: 1;
+  transition:--j 0.7s,--k 0.7s, width 0.7s;
+}
+
+.icon-gallery:hover .rect-5 {
+  --j: 100%;
+  --k: 100%;
+  width: 41px;
+}
+
+.rect-5-glow {
+  width: 22px;
+  height: 2.5px;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 38px;
+  left: 0;
+  box-shadow: 0px 0px 4px 4px rgba(255,255,255, 0.25);
+  opacity: 0;
+  transition: opacity 0.7s 0.2s, width 0.7s;
+}
+
+.icon-gallery:hover .rect-5-glow {
+  opacity: 100%;
+  width: 40px;
+}
   
   /*team*/
 
+  @property --l {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 45.32%;
+  }
+  @property --m {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 75.68%;
+  }
   
-.team {
-    width: 60px;
-    height: 50px;
+  .icon-team {
+    width: 52px;
+    height: 49px;
     position: relative;
-    margin: 0 auto;
+    margin-top: 8px;
+    top: 2px;
   }
   
-  #moveteam .star  {
+  .ellipse-1 {
+    --l: 45.32%;
+    --m: 75.68%;
+    
     position: absolute;
-    bottom: -6px;
-    left: 0;
-    margin: 0 auto;
-    width: 100%;
-    opacity: 100%;
-    transition: transform 0.7s ease-in-out 0.5s,
-                opacity 0.7s ease-in-out 0.5s;
+    width: 18px;
+    height: 16px;
+    left: 6px;
+    top: 24px;
+    border-radius: 95% 0;
+    background: linear-gradient(315deg, #FFFFFF var(--l), #000000 var(--m));
+    transition:--l 0.7s,--m 0.7s;
+    transform: rotate(110deg);
   }
-  #moveteam .star-two {
+  
+  .icon-team:hover .ellipse-1{
+    --l: 35%;
+    --m: 55%;
+  }
+  
+  .ellipse-2 {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  left: 5px;
+  top: 5px;
+  border-radius: 95% 0;
+  background: linear-gradient(315deg, #FFFFFF var(--l), #000000 var(--m));
+  transition:--l 0.7s,--m 0.7s;
+  transform: rotate(-208deg);
+  }
+  
+  .icon-team:hover .ellipse-2{
+    --l: 35%;
+    --m: 55%;
+  }
+  
+  .ellipse-3 {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  left: 20.3px;
+  top: -5px;
+  border-radius: 95% 0;
+  background: linear-gradient(315deg, #FFFFFF var(--l), #000000 var(--m));
+  transition:--l 0.7s,--m 0.7s;
+  transform: rotate(222deg);
+  }
+  
+  .icon-team:hover .ellipse-3{
+    --l: 35%;
+    --m: 55%;
+  }
+  
+  .ellipse-4 {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  left: 36px;
+  top: 5px;
+  border-radius: 95% 0;
+  background: linear-gradient(315deg, #FFFFFF var(--l), #000000 var(--m));
+  transition:--l 0.7s,--m 0.7s;
+  transform: rotate(-67deg);
+  }
+  
+  .icon-team:hover .ellipse-4{
+    --l: 35%;
+    --m: 55%;
+  }
+  
+  .ellipse-5 {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  left: 36px;
+  top: 24px;
+  border-radius: 95% 0;
+  background: linear-gradient(315deg, #FFFFFF var(--l), #000000 var(--m));
+  transition:--l 0.7s,--m 0.7s;
+  transform: rotate(-25deg);
+  }
+  
+  .icon-team:hover .ellipse-5{
+    --l: 35%;
+    --m: 55%;
+  }
+  
+  .team-star {
     position: absolute;
-    bottom: -10px;
-    left: 0;
-    margin: 0 auto;
-    width: 100%;
-    opacity: 0;
-    z-index: 5;
-    transition: opacity 0.7s ease-in 0.5s;
+    top: 11px; 
+    left: 18px;
+    transition: transform 0.7s ease-in-out;
   }
   
-  #moveteam .ellipse-one,#moveteam .ellipse-one-after {
-    position: absolute;
-    left: 39px;
-    bottom: 0;
-  }
-  
-  #moveteam .ellipse-one-after {
-    opacity: 0;
-    transition: opacity 0.7s ease-in-out 0.5s;
-  }
-  
-  #moveteam .ellipse-two, #moveteam .ellipse-two-after {
-    position: absolute;
-    left: 19px;
-    bottom: 30px;
-  }
-  
-  #moveteam .ellipse-two-after {
-    opacity: 0;
-    transition: opacity 0.7s ease-in-out 0.5s;
-  }
-  
-  #moveteam .ellipse-three, #moveteam .ellipse-three-after{
-    position: absolute;
-    left: 8px;
-    bottom: 18px;
-  }
-  
-  #moveteam .ellipse-three-after {
-    opacity: 0;
-    transition: opacity 0.7s ease-in-out 0.5s;
-  }
-  
-  #moveteam .ellipse-four, #moveteam .ellipse-four-after {
-    position: absolute;
-    left: 39px;
-    bottom: 18px;
-  }
-  
-  #moveteam .ellipse-four-after{
-    opacity: 0;
-    transition: opacity 0.7s ease-in-out 0.5s;
-  }
-  
-  #moveteam .ellipse-five, #moveteam .ellipse-five-after {
-    position: absolute;
-    left: 8px;
-    bottom: 0;
-  }
-  
-  #moveteam .ellipse-five-after {
-    opacity: 0;
-    transition: opacity 0.7s ease-in-out 0.7s;
-  }
-  
-  
-  #moveteam:hover .ellipse-one-after, #moveteam:hover .ellipse-two-after, #moveteam:hover .ellipse-three-after, #moveteam:hover .ellipse-four-after, #moveteam:hover .ellipse-five-after {
-    opacity: 100%;
-  }
-  
-  #moveteam:hover .star {
-    opacity: 0;
+  .icon-team:hover .team-star {
     transform: translateY(-5px);
   }
   
-  #moveteam:hover .star-two {
+  .team-star-2 {
+    position: absolute;
+    top: 1px; 
+    left: 8px;
+    transition: transform 0.7s ease-in-out, opacity 0.7s 0.2s ease-in-out;
+    opacity: 0;
+  }
+  
+  .icon-team:hover .team-star-2 {
+    transform: translateY(-5px);
     opacity: 100%;
   }
   
+  
+
   /*logo*/
 
   .logo-animated {
@@ -496,7 +629,103 @@
     opacity: 100%;
   }
   
+
+  /*MAIN CONTENT*/
+
+  .container {
+    min-width: 1300px;
+    height: 600px;
+    margin-top: 70px;
+  }
+
+  .content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .video {
+    width: 650px;
+    height: 430px;
+    background-color: grey;
+    margin-right: 50px;
+  }
+
+  .text-wrapper {
+    width: 200px;
+    height: 200px;
+    margin-top: 15vw;
+  }
+
+  h3 {
+
+  }
+
+  .introduction {
+
+  }
+
+  button {
+    width: 70px;
+    height: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 72px;
+  }
+
+  .columns{
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .column-1 {
+    width: 40%;
+  }
+
+  .info {
+    margin: 50px 0 50px 80px;
+    width: 464px;
+    height: 251px;
+    background-color: grey;
+    padding: 0 50px;
+  }
+
+  .column-2 {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: center;
+    position: relative;
+  }
+
+  .column-3 {
+    width: 40%;
+  }
+
+  .big-star {
+    position: absolute;
+    top: 0;
+  }
+
+  .small-star {
+    position: absolute;
+    top: 300px;
+  }
   
+  .starline {
+    width: 1px;
+    height: 600px;
+    background-color: white;
+  }
+
 
 @media screen and (max-width: 869px){
     .navbar-links {
